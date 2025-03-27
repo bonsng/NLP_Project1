@@ -32,6 +32,15 @@ $ python
 $ python main.py
 ```
 
+- Choose model to use
+
+```bash
+Song Lyrics IR (2010-2015 Billboard Top 100 Songs)
+1. Boolean Model
+2. Vector Space Model
+>>
+```
+
 ---
 
 ### Data : 2010-2015 Billboard Top 100 Songs (.txt)
