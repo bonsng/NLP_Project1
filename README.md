@@ -27,23 +27,21 @@ $ python
 ```
 
 - run main.py
+
 ```bash
 $ python main.py
 ```
 
 ---
 
+### Data : 2010-2015 Billboard Top 100 Songs (.txt)
 
-### Data : 743 popular pop songs with lyrics (.txt)
-
-- Actual Data: in the */songs* folder
-- Data source: Kaggle Lyrics Dataset (https://www.kaggle.com/datasets/karnikakapoor/lyrics)
+- Actual Data: in the _/data_ folder
+- Data source: Top 100 Songs & Lyrics By Year (https://www.kaggle.com/datasets/brianblakely/top-100-songs-and-lyrics-from-1959-to-2019)
 
 ---
 
-
-
-
 ##### Reference
+
 - [Github(boolean-retrieval-model)](https://github.com/mayank-02/boolean-retrieval-model/tree/main)
 - [Github(vector-space-model)](https://github.com/mayank-02/boolean-retrieval-model/tree/main)

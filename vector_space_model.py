@@ -44,7 +44,7 @@ class vector_space_model(object):
 
     def __initialize_postings(self):
         for id in self.songs_filename:
-            with open("./songs/"+self.songs_filename[id], "r") as f:
+            with open("./data/"+self.songs_filename[id], "r") as f:
                 document = f.read()
 
             document = self.remove_special_characters(document)
@@ -111,11 +111,17 @@ class vector_space_model(object):
     def print_scores(self, scores):
         print("%s | %-40s" % ("Score", "Song"))
         print("-" * 52)
+        print(f"{'Score':<8}{'Title':<30}{'Artist':<25}{'Year'}")
+        print("-" * 60)
 
         for (id, score) in scores:
             if score != 0.0:
-                print("%s | %-40s" % (str(score)[:5], self.songs_filename[id]))
-        print(end="\n\n")
+                year, title, artist = self.songs_filename[id].split("-", 2)
+                artist = artist.replace(".txt", "")
+                artist = artist.replace("_", " ")
+                title = title.replace("_", " ")
+                print(f"{str(score)[:5]:<8}{title:<30}{artist:<25}{year}")
+        print(end="\n")
 
     def remove_special_characters(self, text):
         """Removes special characters from text"""

@@ -1,6 +1,7 @@
 import glob
 import os
 import re
+import sys
 
 from collections import defaultdict
 from nltk.corpus import stopwords
@@ -48,11 +49,27 @@ class boolean_model(object):
 
     def query(self, query):
         query_tokens = word_tokenize(query)
+
+        if query_tokens == []:
+            sys.exit()
+
         query_tokens = infix_to_postfix(query_tokens)
 
         matching_docs = self.__query_process(query_tokens)
 
-        return matching_docs
+        print(f"{'No.':<6}{'Year':<8}{'Artist':<20}{'Title'}")
+        print("-" * 60)
+        for idx, song_file in enumerate(matching_docs, 1):
+            try:
+                year, title, artist = song_file.split("-", 2)
+                artist = artist.replace(".txt", "")
+                artist = artist.replace("_", " ")
+                title = title.replace("_", " ")
+                print(f"{idx:<6}{year:<8}{artist:<20}{title}")
+            except ValueError:
+                print(f"{idx:<6}{'Unknown':<8}{'Unknown':<20}{song_file}")
+
+        print(end="\n")
 
     def __query_process(self, query_tokens):
         operands = Stack()
