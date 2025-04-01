@@ -15,6 +15,8 @@
 
 `vector_space_model.py` : vector space model
 
+`boolean_eval.py` : boolean model evaluation
+
 ---
 
 ### Getting Started
