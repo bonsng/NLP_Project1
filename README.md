@@ -1,6 +1,15 @@
 # NLP Project 1
 
-## Song Lyrics IR System (Boolean & Vector Space Model)
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+- [Evaluation](#evaluation)
+- [Data](#data--2010-2015-billboard-top-100-songs-txt)
+- [Reference](#reference)
+
+
+---
+## Introduction
+### Song Lyrics IR System (Boolean & Vector Space Model)
 
 `boolean_model.py` : boolean model
 
@@ -38,6 +47,25 @@ $ python main.py
 Song Lyrics IR (2010-2015 Billboard Top 100 Songs)
 1. Boolean Model
 2. Vector Space Model
+>>
+```
+
+---
+### Evaluation
+
+- run boolean_eval.py
+
+```bash
+$ python boolean_eval.py
+```
+
+- Choose query to evaluate
+
+```bash
+Boolean Model Evaluation
+1. Love & Break Up
+2. Empowerment
+3. Party & Dance
 >>
 ```
 

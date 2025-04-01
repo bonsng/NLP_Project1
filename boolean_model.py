@@ -71,6 +71,8 @@ class boolean_model(object):
 
         print(end="\n")
 
+        return matching_docs
+
     def __query_process(self, query_tokens):
         operands = Stack()
 

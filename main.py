@@ -12,7 +12,7 @@ if __name__ == "__main__":
     if n == "1":
         while True:
             query = input("Type Query for search (AND: & / OR: | / NOT: ~)\n>>> ")
-            boolean.query(query)
+            matching_docs = boolean.query(query)
     elif n == "2":
         while True:
             query = input("Enter Query\n>> ")
