@@ -21,8 +21,7 @@ if __name__ == "__main__":
     elif n == "3":
         while True:
             query = input("Enter Query\n>> ")
-            lsi = latent_semantic_indexing(path, rank=2)
-            lsi.print_document_coordinates()
-            lsi.do_search(query)
+            lsi_50 = latent_semantic_indexing(path, 50)
+            lsi_50.do_search(query)
     else:
         print("Invalid Input")

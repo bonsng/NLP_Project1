@@ -83,7 +83,7 @@ class vector_space_model(object):
             reverse=True,
         )
 
-        self.print_scores(scores)
+        self.print_scores(scores[:10])
 
     def tf(self, term, id):
         if id in self.postings[term]:
@@ -99,18 +99,26 @@ class vector_space_model(object):
 
     def cosine_similarity(self, query, id):
         similarity = 0.0
+        query_norm = 0.0
 
         for term in query:
             if term in self.vocabulary:
-                similarity += self.tf(term, id) * self.idf(term)
+                tf_query = 1
+                idf = self.idf(term)
+                tf_idf_query = tf_query * idf
+                tf_idf_doc = self.tf(term, id) * idf
 
-        similarity = similarity / self.lengths[id]
+                similarity += tf_idf_query * tf_idf_doc
+                query_norm += tf_idf_query ** 2
 
-        return similarity
+        if self.lengths[id] == 0 or query_norm == 0:
+            return 0.0
+
+        return similarity / (math.sqrt(query_norm) * self.lengths[id])
 
     def print_scores(self, scores):
         print("%s | %-40s" % ("Score", "Song"))
-        print("-" * 52)
+        print("-" * 60)
         print(f"{'Score':<8}{'Title':<30}{'Artist':<25}{'Year'}")
         print("-" * 60)
 

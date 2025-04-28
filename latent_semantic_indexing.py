@@ -64,7 +64,7 @@ class latent_semantic_indexing(object):
         self.A = A
 
     def __apply_svd(self):
-        """Apply SVD and truncate to rank k"""
+        """Decompose matrix A and truncate to rank k"""
         U, S, Vt = svd(self.A, full_matrices=False)
 
         # Truncate to rank-k
@@ -80,7 +80,7 @@ class latent_semantic_indexing(object):
             print("Query is empty after preprocessing.")
             sys.exit()
 
-        # Project query into the same latent space
+        # Step 5: Find the new query vector coordinates in the reduced 2-dimensional space.
         query_lsi = query_vector @ self.U @ np.linalg.inv(self.S)
 
         scores = []
@@ -91,7 +91,7 @@ class latent_semantic_indexing(object):
 
         scores = sorted(scores, key=lambda x: x[1], reverse=True)
 
-        self.print_scores(scores)
+        self.print_scores(scores[:10])
 
     def __transform_query(self, query):
         """Transform a query into a TF vector"""
@@ -114,10 +114,10 @@ class latent_semantic_indexing(object):
         return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
 
     def print_scores(self, scores):
-        print("%s | %-40s" % ("Score", "Song"))
-        print("-" * 52)
+        print(f"LSI retrieval : Rank-{self.rank}")
+        print("-" * 70)
         print(f"{'Score':<8}{'Title':<30}{'Artist':<25}{'Year'}")
-        print("-" * 60)
+        print("-" * 70)
 
         for (id, score) in scores:
             if score != 0.0:
