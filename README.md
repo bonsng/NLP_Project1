@@ -84,3 +84,4 @@ Boolean Model Evaluation
 
 - [Github(boolean-retrieval-model)](https://github.com/mayank-02/boolean-retrieval-model/tree/main)
 - [Github(vector-space-model)](https://github.com/mayank-02/boolean-retrieval-model/tree/main)
+- [WikiDocs(LSA)](https://wikidocs.net/24949)
